@@ -36,6 +36,9 @@ const formSchema = z.object({
   company: z.string().min(1, {
     message: 'Company name is required.'
   }),
+  cargo: z.string().min(1, {
+    message: 'cargo name is required.'
+  }),
   gender: z.enum(['male', 'female', 'other'], {
     required_error: 'Please select a gender.'
   })
@@ -49,6 +52,7 @@ export default function EmployeeForm() {
       country: '',
       email: '',
       company: '',
+      cargo: '',
       gender: undefined
     }
   });
@@ -133,6 +137,19 @@ export default function EmployeeForm() {
                     <FormLabel>Company</FormLabel>
                     <FormControl>
                       <Input placeholder="Enter your company" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="cargo"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Cargo</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter your cargo" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
